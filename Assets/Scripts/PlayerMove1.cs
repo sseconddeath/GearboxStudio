@@ -9,6 +9,13 @@ public class PlayerMove : MonoBehaviour
     float speed = 10f;
     private Vector2 moveVector;
     private bool facingRight = true;
+    private Animator anim;
+    //private States State
+    //{
+
+    //    get { return (States)anim.GetInteger("state"); }
+    //    set { anim.SetInteger("state",(int) value);}
+    //}
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +26,7 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        anim = GetComponent<Animator>();
         moveVector.x = Input.GetAxis("Horizontal");
         moveVector.y = Input.GetAxis("Vertical");
         rb.velocity = new Vector2(moveVector.x * speed, rb.velocity.y);
@@ -47,7 +55,13 @@ public class PlayerMove : MonoBehaviour
     }
 
 
+    //public enum States
+    //{
+    //    playerstate,
+    //    run,
+    //    jump
 
+    //}
 
     void Flip() //поворот персонажа
     { facingRight = !facingRight;
