@@ -8,8 +8,9 @@ public class PlayerMove : MonoBehaviour
     float jumpForce = 700f;
     float speed = 10f;
     private Vector2 moveVector;
-    private bool facingRight = true;
+    //private bool facingRight = true;
     private Animator anim;
+    public SpriteRenderer sr;
     //private States State
     //{
 
@@ -21,6 +22,8 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -31,15 +34,8 @@ public class PlayerMove : MonoBehaviour
         moveVector.y = Input.GetAxis("Vertical");
         rb.velocity = new Vector2(moveVector.x * speed, rb.velocity.y);
         //rb.position + moveVector * speed * Time.deltaTime;
-        if (facingRight == false && moveVector.x > 0)//если игрок смотрит влево поворачивается
-        {
-            Flip();
-         }
-
-       else if (facingRight == true && moveVector.x < 0)//если игрок смотрит вправо поворачивается
-        {
-            Flip();
-        }
+       // Walk();
+        Flip();
 
         //float moveX = Input.GetAxis("Horizontal");
         //rb.MovePosition(rb.position + Vector2.right * moveX * speed * Time.deltaTime);
@@ -55,19 +51,30 @@ public class PlayerMove : MonoBehaviour
     }
 
 
-    //public enum States
+    public enum States
+    {
+        playerstate,
+       run,
+        jump
+
+    }
+    //void Walk()
     //{
-    //    playerstate,
-    //    run,
-    //    jump
-
+    //    moveVector.x = Input.GetAxis("Horizontal");
+    //    anim.SetFloat("moveX", Mathf.Abs(moveVector.x));
+    //     rb.velocity = new Vector2(moveVector.x * speed, rb.velocity.y);
     //}
-
     void Flip() //поворот персонажа
-    { facingRight = !facingRight;
-    Vector3 scaler = transform.localScale;
-        scaler.x  *= -1;
-        transform.localScale = scaler; 
-    
+    {
+        if ( moveVector.x > 0)
+        {
+            sr.flipX = false;
+        }
+        else if( moveVector.x < 0)
+        {
+            sr.flipX = true;
+        }
+
+
     }
 }
