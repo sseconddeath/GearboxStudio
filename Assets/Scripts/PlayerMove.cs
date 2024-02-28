@@ -15,14 +15,7 @@ public class PlayerMove : MonoBehaviour
     public Transform GroundCheck;
     public float checkRadius = 0.5f;
     public LayerMask Ground;
-    //private States State
-    //{
-
-    //    get { return (States)anim.GetInteger("state"); }
-    //    set { anim.SetInteger("state",(int) value);}
-    //}
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
