@@ -5,12 +5,16 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     Rigidbody2D rb;
-    float jumpForce = 700f;
+   public float jumpForce = 15f;
     float speed = 10f;
     private Vector2 moveVector;
     //private bool facingRight = true;
     private Animator anim;
     public SpriteRenderer sr;
+    public bool onGround;
+    public Transform GroundCheck;
+    public float checkRadius = 0.5f;
+    public LayerMask Ground;
     //private States State
     //{
 
@@ -30,40 +34,41 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         anim = GetComponent<Animator>();
-        moveVector.x = Input.GetAxis("Horizontal");
-        moveVector.y = Input.GetAxis("Vertical");
-        rb.velocity = new Vector2(moveVector.x * speed, rb.velocity.y);
-        //rb.position + moveVector * speed * Time.deltaTime;
-       // Walk();
+       
+        Walk();
+        Jump();
         Flip();
+        CheckingGround();
+       
 
-        //float moveX = Input.GetAxis("Horizontal");
-        //rb.MovePosition(rb.position + Vector2.right * moveX * speed * Time.deltaTime);
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+
+
+
+    }
+    void CheckingGround()
+    {
+        onGround = Physics2D.OverlapCircle(GroundCheck.position, checkRadius, Ground);
+        anim.SetBool("onGround", onGround);
+
+    }
+    void Jump()
+    {
+        if (Input.GetKeyDown(KeyCode.Space)&& onGround)
         {
+            //rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             rb.AddForce(Vector2.up * jumpForce);
-            //rb.AddForce(new Vector2 (0, jumpForce), ForceMode2D.Impulse);
         }
 
-
-
-
     }
 
 
-    public enum States
+
+    void Walk()
     {
-        playerstate,
-       run,
-        jump
-
+        moveVector.x = Input.GetAxis("Horizontal");
+        anim.SetFloat("moveX", Mathf.Abs(moveVector.x));
+        rb.velocity = new Vector2(moveVector.x * speed, rb.velocity.y);
     }
-    //void Walk()
-    //{
-    //    moveVector.x = Input.GetAxis("Horizontal");
-    //    anim.SetFloat("moveX", Mathf.Abs(moveVector.x));
-    //     rb.velocity = new Vector2(moveVector.x * speed, rb.velocity.y);
-    //}
     void Flip() //поворот персонажа
     {
         if ( moveVector.x > 0)
