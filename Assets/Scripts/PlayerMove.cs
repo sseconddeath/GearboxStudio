@@ -48,7 +48,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space)&& onGround)
         {
-            //rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            
             rb.AddForce(Vector2.up * jumpForce);
         }
 
@@ -56,7 +56,7 @@ public class PlayerMove : MonoBehaviour
 
 
 
-    void Walk()
+    void Walk()//ходьба
     {
         moveVector.x = Input.GetAxis("Horizontal");
         anim.SetFloat("moveX", Mathf.Abs(moveVector.x));
