@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class Healt : MonoBehaviour
 {
@@ -28,11 +29,20 @@ public class Healt : MonoBehaviour
             HpChagedPercent?.Invoke(_hp / _maxHp);
 
             if (_hp <= 0)
-
+            {
                 Die?.Invoke();
+
+                LoadScene();
+            }
         }
     }
+    [System.Obsolete]
+    void LoadScene()
+    {
+        Application.LoadLevel(Application.loadedLevel);
 
+    }
+   
     private void Start()
     {
         Init();
