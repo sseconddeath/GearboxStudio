@@ -21,13 +21,14 @@ public class Healt : MonoBehaviour
     public float HP
     {
         get => _hp;
-        set 
+        set
         {
             _hp = value;
             HpChaged?.Invoke(_hp);
-            HpChagedPercent?.Invoke(_hp/_maxHp);
+            HpChagedPercent?.Invoke(_hp / _maxHp);
 
             if (_hp <= 0)
+
                 Die?.Invoke();
         }
     }
@@ -50,4 +51,11 @@ public class Healt : MonoBehaviour
     {
         HP += hp;
     }
+    //private void Die()
+    //{
+    //    if (menuEnd.enabled == false)
+    //    {
+    //        menuEnd.enabled = true;
+    //    }
+    //}
 }
