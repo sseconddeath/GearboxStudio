@@ -68,4 +68,12 @@ public class Healt : MonoBehaviour
     //        menuEnd.enabled = true;
     //    }
     //}
+    public void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.CompareTag("heal"))
+        {
+            Destroy(col.gameObject);
+            AddHealth(10);
+        }
+    }
 }
