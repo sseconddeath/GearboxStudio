@@ -4,16 +4,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Damage : MonoBehaviour
+public class Heal : MonoBehaviour
 {
     [SerializeField]
-    private UnityEvent<float> DamageGot;
+    private UnityEvent<float> HealGot;
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.collider.TryGetComponent<Attacker>(out var attacker))
+        if (other.collider.TryGetComponent<Healer>(out var Healer))
         {
-            DamageGot?.Invoke(attacker.Damage);
+            HealGot?.Invoke(Healer.Hp);
+            Destroy(other.gameObject);
         }
     }
 }
