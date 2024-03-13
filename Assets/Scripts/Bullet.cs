@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    [SerializeField]
+    private float _damage;
+
+
     float moveSpeed = 7f;
     Rigidbody2D rb;
     PlayerMove target;
@@ -20,11 +24,15 @@ public class Bullet : MonoBehaviour
        
     }
 
+    public float Damage => _damage;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        Healt healt = other.GetComponent<Healt>();
+        if (other.gameObject.name == "Player")
         {
-            
+            healt.GetDamage(_damage);
+            Destroy(gameObject);
         }
     }
 
