@@ -17,7 +17,7 @@ public class Healt : MonoBehaviour
     [SerializeField]
     private UnityEvent<float> HpChagedPercent;
 
-    private float _hp;      //Текущее здоровье
+    private float _hp;      //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
     public float HP
     {
@@ -61,6 +61,8 @@ public class Healt : MonoBehaviour
     {
         HP += hp;
     }
+    
+}
     //private void Die()
     //{
     //    if (menuEnd.enabled == false)
@@ -76,4 +78,4 @@ public class Healt : MonoBehaviour
     //        AddHealth(10);
     //    }
     //}
-}
+
