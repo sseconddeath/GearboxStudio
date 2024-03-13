@@ -34,6 +34,11 @@ public class Bullet : MonoBehaviour
             healt.GetDamage(_damage);
             Destroy(gameObject);
         }
+        if (other.gameObject.tag == "ground")
+        {
+            Destroy(gameObject);
+        }
+
     }
 
 
