@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {
+    [SerializeField]
+    private Transform firePointPlayer;
+    [SerializeField]
+    private GameObject bullet;
+
     Rigidbody2D rb;
    public float jumpForce = 15f;
     float speed = 10f;
@@ -24,7 +29,6 @@ public class PlayerMove : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         anim = GetComponent<Animator>();
@@ -33,12 +37,15 @@ public class PlayerMove : MonoBehaviour
         Jump();
         Flip();
         CheckingGround();
-       
-
-
-
-
+        Fire();
     }
+    
+    private void Fire()//סענוכüבא
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+            Instantiate(bullet, firePointPlayer.position, transform.rotation);
+    }
+
     void CheckingGround()
     {
         onGround = Physics2D.OverlapCircle(GroundCheck.position, checkRadius, Ground);
