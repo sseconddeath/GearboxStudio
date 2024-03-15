@@ -5,11 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
 {
-    [SerializeField]
-    private Transform firePointPlayer;
-    [SerializeField]
-    private GameObject bullet;
-
     Rigidbody2D rb;
    public float jumpForce = 15f;
     float speed = 10f;
@@ -17,6 +12,7 @@ public class PlayerMove : MonoBehaviour
     //private bool facingRight = true;
     private Animator anim;
     public SpriteRenderer sr;
+    private bool facingRight = true;
     public bool onGround;
     public Transform GroundCheck;
     public float checkRadius = 0.5f;
@@ -37,13 +33,6 @@ public class PlayerMove : MonoBehaviour
         Jump();
         Flip();
         CheckingGround();
-        Fire();
-    }
-    
-    private void Fire()//стрельба
-    {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-            Instantiate(bullet, firePointPlayer.position, transform.rotation);
     }
 
     void CheckingGround()
@@ -72,13 +61,17 @@ public class PlayerMove : MonoBehaviour
     }
     void Flip() //поворот персонажа
     {
-        if ( moveVector.x > 0)
+        if ( moveVector.x > 0 && facingRight == false)
         {
-            sr.flipX = false;
+            facingRight = !facingRight;
+            transform.Rotate(0f, 180f, 0f);
+            //sr.flipX = false;
         }
-        else if( moveVector.x < 0)
+        else if( moveVector.x < 0 && facingRight == true)
         {
-            sr.flipX = true;
+            facingRight = !facingRight;
+            transform.Rotate(0f, 180f, 0f);
+            //sr.flipX = true;
         }
 
 
