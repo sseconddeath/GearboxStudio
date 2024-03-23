@@ -32,8 +32,9 @@ private int randomspot;
         else
         {waitTime -=Time.deltaTime;
         }
+        Flip();
      }
-     Flip();
+     
    }
     void Flip() //������� ���������
     {
