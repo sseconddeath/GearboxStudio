@@ -7,15 +7,14 @@ public class bot : MonoBehaviour
 {
     public float startWaitTime;
     public float waitTime;
-public float speed = 3f;
-private Vector2 moveVector;
-public SpriteRenderer sr;
-public Transform[] moveSpots;
-private int randomspot;
-    // Start is called before the first frame update
+    private bool facingRight = true;
+    public float speed = 3f;
+    private Vector2 moveVector;
+    public SpriteRenderer sr;
+    public Transform[] moveSpots;
+    private int randomspot;
     void Start()
     {
-
         randomspot = Random.Range(0,moveSpots.Length);
         waitTime = startWaitTime;
     }
@@ -34,19 +33,18 @@ private int randomspot;
         }
         Flip();
      }
-     
    }
-    void Flip() //������� ���������
+    void Flip()
     {
-        if ( moveVector.x > 0)
+        if (moveVector.x > 0 && facingRight == false)
         {
-            sr.flipX = false;
+            facingRight = !facingRight;
+            transform.Rotate(0f, 180f, 0f);
         }
-        else if( moveVector.x < 0)
+        else if( moveVector.x < 0 && facingRight == true)
         {
-            sr.flipX = true;
+            facingRight = !facingRight;
+            transform.Rotate(0f, 180f, 0f);
         }
-
-
     }
 }

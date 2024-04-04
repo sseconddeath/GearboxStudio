@@ -6,10 +6,9 @@ using UnityEngine.SceneManagement;
 public class PlayerMove : MonoBehaviour
 {
     Rigidbody2D rb;
-   public float jumpForce = 15f;
+    public float jumpForce = 15f;
     float speed = 10f;
     private Vector2 moveVector;
-    //private bool facingRight = true;
     private Animator anim;
     public SpriteRenderer sr;
     private bool facingRight = true;
@@ -73,8 +72,6 @@ public class PlayerMove : MonoBehaviour
             transform.Rotate(0f, 180f, 0f);
             //sr.flipX = true;
         }
-
-
     }
     //[System.Obsolete]
     //void LoadScene()
