@@ -8,7 +8,6 @@ public class Bulletplayer : MonoBehaviour
     public int damage = 1;
     public Rigidbody2D rb;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb.velocity = transform.right * speed;
@@ -21,6 +20,9 @@ public class Bulletplayer : MonoBehaviour
         {
             enemy.TakeDamage(damage);
         }
-        Destroy(gameObject);
+        if (hitInfo.gameObject.name != "Player")
+        {
+            Destroy(gameObject);
+        }
     }
 }
