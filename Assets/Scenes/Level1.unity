@@ -1064,7 +1064,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4571016528130661195, guid: 0f5d050b0d9252d48afd70de21ddec0d, type: 3}
       propertyPath: m_Name
-      value: Standing animation_4 (1)
+      value: es1
       objectReference: {fileID: 0}
     - target: {fileID: 4571016528130661195, guid: 0f5d050b0d9252d48afd70de21ddec0d, type: 3}
       propertyPath: m_TagString
@@ -3728,7 +3728,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4571016528130661195, guid: 0f5d050b0d9252d48afd70de21ddec0d, type: 3}
       propertyPath: m_Name
-      value: Standing animation_4 (2)
+      value: es2
       objectReference: {fileID: 0}
     - target: {fileID: 4571016528130661195, guid: 0f5d050b0d9252d48afd70de21ddec0d, type: 3}
       propertyPath: m_TagString
@@ -33575,7 +33575,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4571016528130661195, guid: 0f5d050b0d9252d48afd70de21ddec0d, type: 3}
       propertyPath: m_Name
-      value: Standing animation_4
+      value: es3
       objectReference: {fileID: 0}
     - target: {fileID: 4571016528130661195, guid: 0f5d050b0d9252d48afd70de21ddec0d, type: 3}
       propertyPath: m_TagString
