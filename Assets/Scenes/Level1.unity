@@ -1583,7 +1583,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0a42348fe7ccc504f838061fbd98802a, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.554
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5027,7 +5027,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 398b671a1a222bf4f84959c1c28cfe1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LazerAudio: {fileID: 0}
+  LazerAudio: {fileID: 1009097409}
   firepoint: {fileID: 307470978}
   bullet: {fileID: 210587894293182505, guid: 5cc9095b348295644924d0a020fef042, type: 3}
   chargeBullet: {fileID: 1882063011768981356, guid: 58057d8c1703c654f83300ff45529cbc, type: 3}
