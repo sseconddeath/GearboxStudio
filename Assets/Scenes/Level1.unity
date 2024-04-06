@@ -5030,6 +5030,8 @@ MonoBehaviour:
   LazerAudio: {fileID: 0}
   firepoint: {fileID: 307470978}
   bullet: {fileID: 210587894293182505, guid: 5cc9095b348295644924d0a020fef042, type: 3}
+  chargeBullet: {fileID: 1882063011768981356, guid: 58057d8c1703c654f83300ff45529cbc, type: 3}
+  timer: 1
 --- !u!1001 &1829618020
 PrefabInstance:
   m_ObjectHideFlags: 0
