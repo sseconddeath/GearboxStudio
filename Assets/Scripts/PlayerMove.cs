@@ -16,7 +16,9 @@ public class PlayerMove : MonoBehaviour
     public Transform GroundCheck;
     public float checkRadius = 0.5f;
     public LayerMask Ground;
-    
+
+    public AudioSource JumpAudio, StepsAudio;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -44,7 +46,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space)&& onGround)
         {
-            
+            JumpAudio.Play();
             rb.AddForce(Vector2.up * jumpForce);
         }
 
@@ -54,6 +56,7 @@ public class PlayerMove : MonoBehaviour
 
     void Walk()//ходьба
     {
+        
         moveVector.x = Input.GetAxis("Horizontal");
         anim.SetFloat("moveX", Mathf.Abs(moveVector.x));
         rb.velocity = new Vector2(moveVector.x * speed, rb.velocity.y);
@@ -62,12 +65,14 @@ public class PlayerMove : MonoBehaviour
     {
         if ( moveVector.x > 0 && facingRight == false)
         {
+            StepsAudio.Play();
             facingRight = !facingRight;
             transform.Rotate(0f, 180f, 0f);
             //sr.flipX = false;
         }
         else if( moveVector.x < 0 && facingRight == true)
         {
+            StepsAudio.Play();
             facingRight = !facingRight;
             transform.Rotate(0f, 180f, 0f);
             //sr.flipX = true;

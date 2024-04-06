@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    public AudioSource LazerAudio;
     public Transform firepoint;
     public GameObject bullet;
     private bool facingRight = true;
@@ -13,7 +14,9 @@ public class Weapon : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightArrow)) facingRight = true;
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
+            
             Shoot();
+            LazerAudio.Play();
         }
     }
     void Shoot()
