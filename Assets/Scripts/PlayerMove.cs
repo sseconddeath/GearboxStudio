@@ -17,6 +17,11 @@ public class PlayerMove : MonoBehaviour
     public float checkRadius = 0.5f;
     public LayerMask Ground;
 
+    public float flyingTime = 2f;
+    public float flyingSpeed = 7f;
+    public float gravityScale = 1f;
+
+
     public AudioSource JumpAudio, StepsAudio;
 
     void Start()
@@ -24,6 +29,7 @@ public class PlayerMove : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
+        rb.gravityScale = gravityScale;
     }
 
     void Update()
@@ -31,7 +37,8 @@ public class PlayerMove : MonoBehaviour
         anim = GetComponent<Animator>();
        
         Walk();
-        Jump();
+        //Jump();
+        Flight();
         Flip();
         CheckingGround();
     }
@@ -40,9 +47,9 @@ public class PlayerMove : MonoBehaviour
     {
         onGround = Physics2D.OverlapCircle(GroundCheck.position, checkRadius, Ground);
         anim.SetBool("onGround", onGround);
-
+        if (onGround) flyingTime = 2f;
     }
-    void Jump()
+    void Jump() //пока не используется
     {
         if (Input.GetKeyDown(KeyCode.Space)&& onGround)
         {
@@ -52,7 +59,23 @@ public class PlayerMove : MonoBehaviour
 
     }
 
-
+    void Flight()
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+                if (flyingTime > 0)
+                    rb.velocity = new Vector2(rb.velocity.x, flyingSpeed);
+                flyingTime -= Time.deltaTime;
+        }
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            Fall();
+        }
+    }
+    private void Fall()
+    {
+        rb.AddForce(Vector2.down * gravityScale);
+    }
 
     void Walk()//ходьба
     {

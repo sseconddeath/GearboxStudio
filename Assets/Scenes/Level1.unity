@@ -4862,6 +4862,9 @@ MonoBehaviour:
   Ground:
     serializedVersion: 2
     m_Bits: 8
+  flyingTime: 2
+  flyingSpeed: 7
+  gravityScale: 1
   JumpAudio: {fileID: 318634861}
   StepsAudio: {fileID: 1928323781}
 --- !u!4 &1820538732 stripped
