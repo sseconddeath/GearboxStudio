@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class PlayerMove : MonoBehaviour
@@ -20,6 +21,25 @@ public class PlayerMove : MonoBehaviour
     public float flyingTime = 2f;
     public float flyingSpeed = 7f;
     public float gravityScale = 1f;
+    [SerializeField]
+    private UnityEvent<float> FuelChagedPercent;
+
+    private float _fuel;
+
+    public float Fuel
+    {
+        get => _fuel;
+        set
+        {
+            _fuel = value;
+            FuelChagedPercent?.Invoke(_fuel / flyingTime);
+
+            //if (_fuel <= 0)
+            //{
+               
+            //}
+        }
+    }
 
 
     public AudioSource JumpAudio, StepsAudio;
@@ -30,6 +50,7 @@ public class PlayerMove : MonoBehaviour
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
         rb.gravityScale = gravityScale;
+        Fuel = flyingTime;
     }
 
     void Update()
@@ -47,7 +68,7 @@ public class PlayerMove : MonoBehaviour
     {
         onGround = Physics2D.OverlapCircle(GroundCheck.position, checkRadius, Ground);
         anim.SetBool("onGround", onGround);
-        if (onGround) flyingTime = 2f;
+        if (onGround) Fuel = 2f;
     }
     void Jump() //пока не используется
     {
@@ -63,9 +84,9 @@ public class PlayerMove : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
-                if (flyingTime > 0)
+                if (Fuel > 0)
                     rb.velocity = new Vector2(rb.velocity.x, flyingSpeed);
-                flyingTime -= Time.deltaTime;
+            Fuel -= Time.deltaTime;
         }
         if (Input.GetKeyUp(KeyCode.Space))
         {
