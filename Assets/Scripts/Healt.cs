@@ -17,7 +17,7 @@ public class Healt : MonoBehaviour
     [SerializeField]
     private UnityEvent<float> HpChagedPercent;
 
-    private float _hp;      //������� ��������
+    private float _hp;      
 
     public float HP
     {
