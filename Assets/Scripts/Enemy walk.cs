@@ -6,6 +6,7 @@ public class Enemywalk : MonoBehaviour
 {
     public float speed;
     private Transform player;
+    private bool faceRight = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +16,8 @@ public class Enemywalk : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
         transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
     }
+   
 }
