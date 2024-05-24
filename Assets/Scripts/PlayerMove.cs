@@ -18,7 +18,7 @@ public class PlayerMove : MonoBehaviour
     public float checkRadius = 0.5f;
     public LayerMask Ground;
 
-    public float flyingTime = 2f;
+    public float flyingTime = 0.65f;
     public float flyingSpeed = 7f;
     public float gravityScale = 1f;
     [SerializeField]
@@ -68,7 +68,7 @@ public class PlayerMove : MonoBehaviour
     {
         onGround = Physics2D.OverlapCircle(GroundCheck.position, checkRadius, Ground);
         anim.SetBool("onGround", onGround);
-        if (onGround) Fuel = 2f;
+        if (onGround) Fuel = flyingTime;
     }
     void Jump() //пока не используется
     {
